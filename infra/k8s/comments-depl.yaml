@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: event-bus-depl
+  name: comments-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: event-bus
+      app: comments
   template:
     metadata:
       labels:
-        app: event-bus
+        app: comments
     spec:
       containers:
-        - name: event-bus
-          image: rhodinnagwere/event-bus
+        - name: comments
+          image: rhodinnagwere/comments
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: event-bus-srv
+  name: comments-srv
 spec:
   selector:
-    app: event-bus
+    app: comments
   ports:
-    - name: event-bus
+    - name: comments
       protocol: TCP
-      port: 4005
-      targetPort: 4005
+      port: 4001
+      targetPort: 4001
